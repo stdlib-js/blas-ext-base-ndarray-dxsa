@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,16 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var serialize = require( '@stdlib/ndarray-base-serialize-meta-data' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var addon = require( './../src/addon.node' );
-
-
-// MAIN //
+import { float64ndarray, typedndarray } from '@stdlib/types/ndarray';
 
 /**
 * Subtracts a scalar constant from each element in a one-dimensional double-precision floating-point ndarray.
@@ -37,9 +32,8 @@ var addon = require( './../src/addon.node' );
 *     -   a one-dimensional input ndarray.
 *     -   a zero-dimensional ndarray containing the scalar constant to subtract.
 *
-* @private
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {ndarray} input ndarray
+* @param arrays - array-like object containing ndarrays
+* @returns input ndarray
 *
 * @example
 * var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
@@ -51,14 +45,9 @@ var addon = require( './../src/addon.node' );
 * var out = dxsa( [ x, alpha ] );
 * // returns <ndarray>[ -7.0, -4.0, -2.0, -10.0 ]
 */
-function dxsa( arrays ) {
-	var alpha = arrays[ 1 ];
-	var x = arrays[ 0 ];
-	addon( getData( x ), serialize( x ), getData( alpha ), serialize( alpha ) );
-	return x;
-}
+declare function dxsa( arrays: [ float64ndarray, typedndarray<number> ] ): float64ndarray;
 
 
 // EXPORTS //
 
-module.exports = dxsa;
+export = dxsa;
